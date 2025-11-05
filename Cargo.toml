@@ -1,0 +1,66 @@
+[package]
+name = "ad-blocker-api"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+adblock = "0.10.4"
+hickory-server = "0.25.2"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.47.1", features = ["full"] }
+reqwest = { version = "0.11", features = ["json"] }
+regex = "1.10"
+url = "2.5"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+anyhow = "1.0"
+urlencoding = "2.1"
+hyper = { version = "0.14", features = ["full"] }
+hyper-tls = "0.5"
+http = "0.2"
+bytes = "1.0"
+hickory-client = "0.24"
+hickory-proto = "0.24"
+base64 = "0.22"
+rand = "0.8"
+
+[[example]]
+name = "basic_usage"
+path = "examples/basic_usage.rs"
+
+[[example]]
+name = "web_server"
+path = "examples/web_server.rs"
+
+[[example]]
+name = "mobile_app"
+path = "examples/mobile_app.rs"
+
+[[example]]
+name = "mobile_advanced"
+path = "examples/mobile_advanced.rs"
+
+[[example]]
+name = "mobile_proxy"
+path = "examples/mobile_proxy.rs"
+
+[[example]]
+name = "dns_server"
+path = "examples/dns_server.rs"
+
+[[example]]
+name = "stevenblack_proxy"
+path = "examples/stevenblack_proxy.rs"
+
+[[example]]
+name = "stevenblack_test"
+path = "examples/stevenblack_test.rs"
+
+[[example]]
+name = "vpn_server"
+path = "examples/vpn_server.rs"
+
+[[example]]
+name = "local_dns"
+path = "examples/local_dns.rs"
