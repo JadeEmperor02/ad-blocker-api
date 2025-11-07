@@ -78,6 +78,31 @@ impl DynamicAdBlocker {
             Regex::new(r"^.*\.mopub\.com$")?,
             Regex::new(r"^.*\.applovin\.com$")?,
             Regex::new(r"^.*\.unity3d\.com/.*ads.*$")?,
+            
+            // Dynamic/lazy loading ad networks
+            Regex::new(r"^.*\.adsystem\..*$")?,
+            Regex::new(r"^.*\.adform\.net$")?,
+            Regex::new(r"^.*\.adsafeprotected\.com$")?,
+            Regex::new(r"^.*\.serving-sys\.com$")?,
+            Regex::new(r"^.*\.adsystem\.com$")?,
+            Regex::new(r"^.*\.adnxs\.com$")?,
+            
+            // JavaScript ad injection domains
+            Regex::new(r"^.*\.googletag\..*$")?,
+            Regex::new(r"^.*\.gstatic\.com/.*ads.*$")?,
+            Regex::new(r"^.*\.googleusercontent\.com/.*ads.*$")?,
+            
+            // Pop-up and redirect ad networks
+            Regex::new(r"^.*\.popads\.net$")?,
+            Regex::new(r"^.*\.popcash\.net$")?,
+            Regex::new(r"^.*\.propellerads\.com$")?,
+            Regex::new(r"^.*\.mgid\.com$")?,
+            Regex::new(r"^.*\.revcontent\.com$")?,
+            
+            // Native advertising platforms
+            Regex::new(r"^.*\.nativo\.com$")?,
+            Regex::new(r"^.*\.sharethrough\.com$")?,
+            Regex::new(r"^.*\.plista\.com$")?,
         ];
         
         // Subdomain generation patterns (for dynamic ad domains)
@@ -87,6 +112,13 @@ impl DynamicAdBlocker {
             Regex::new(r"^ads[0-9]*\..*$")?,    // ads + numbers
             Regex::new(r"^banner[0-9]*\..*$")?, // banner + numbers
             Regex::new(r"^track[0-9]*\..*$")?,  // track + numbers
+            Regex::new(r"^ad[0-9]*\..*$")?,     // ad + numbers
+            Regex::new(r"^promo[0-9]*\..*$")?,  // promo + numbers
+            Regex::new(r"^popup[0-9]*\..*$")?,  // popup + numbers
+            Regex::new(r"^click[0-9]*\..*$")?,  // click + numbers
+            Regex::new(r"^serve[0-9]*\..*$")?,  // serve + numbers
+            Regex::new(r"^cdn[0-9]*\..*ads.*$")?, // CDN with ads
+            Regex::new(r"^static[0-9]*\..*ads.*$")?, // Static with ads
         ];
         
         // Enhanced tracking patterns
@@ -97,6 +129,12 @@ impl DynamicAdBlocker {
             Regex::new(r".*metrics.*")?,
             Regex::new(r".*beacon.*")?,
             Regex::new(r".*collector.*")?,
+            Regex::new(r".*pixel.*")?,
+            Regex::new(r".*impression.*")?,
+            Regex::new(r".*conversion.*")?,
+            Regex::new(r".*retargeting.*")?,
+            Regex::new(r".*remarketing.*")?,
+            Regex::new(r".*affiliate.*")?,
         ];
         
         Ok(Self {
