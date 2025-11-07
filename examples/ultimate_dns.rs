@@ -106,7 +106,17 @@ async fn check_domain_blocked(
     blocked_domains: &HashSet<String>, 
     blocker: &SimpleAdBlocker
 ) -> bool {
-    // Check against our massive blocklist first (fastest)
+    // First check the advanced ad blocker (your original 78.9% effective logic)
+    match blocker.check_url(&format!("http://{}", domain)).await {
+        Ok(result) => {
+            if result.should_block {
+                return true;
+            }
+        }
+        Err(_) => {}
+    }
+    
+    // Then check against Hagezi blocklist
     if blocked_domains.contains(domain) {
         return true;
     }
@@ -120,11 +130,7 @@ async fn check_domain_blocked(
         }
     }
     
-    // Fallback to the advanced ad blocker
-    match blocker.check_url(&format!("http://{}", domain)).await {
-        Ok(result) => result.should_block,
-        Err(_) => false,
-    }
+    false
 }
 
 fn extract_domain_from_dns_query(data: &[u8]) -> Option<String> {
