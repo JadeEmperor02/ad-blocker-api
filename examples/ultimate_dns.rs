@@ -307,7 +307,14 @@ async fn main() -> Result<()> {
     println!("   • Programmatic advertising detection");
     println!("   • Real-time bidding platform blocking");
     println!("   • Connection monitoring for post-load ads");
+    println!("   • Low TTL responses for immediate cache refresh");
     println!("🚀 Enhanced filtering for better website rendering");
+    println!("💡 After connecting, clear your device's DNS cache for immediate effect:");
+    println!("   • Android: Settings > Apps > Chrome > Storage > Clear Cache");
+    println!("   • iOS: Settings > General > Reset > Reset Network Settings");
+    println!("   • Windows: Run 'ipconfig /flushdns' in Command Prompt");
+    println!("   • Mac: Run 'sudo dscacheutil -flushcache' in Terminal");
+    println!("   • Linux: Run 'sudo systemctl restart systemd-resolved'");
     println!("🔧 Press Ctrl+C to stop");
     println!();
     
@@ -486,7 +493,7 @@ fn create_blocked_dns_response(query: &[u8]) -> Vec<u8> {
         0xc0, 0x0c,
         0x00, 0x01,
         0x00, 0x01,
-        0x00, 0x00, 0x00, 0x3c,
+        0x00, 0x00, 0x00, 0x01,
         0x00, 0x04,
         0x00, 0x00, 0x00, 0x00,
     ]);
