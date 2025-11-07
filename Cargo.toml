@@ -64,3 +64,7 @@ path = "examples/vpn_server.rs"
 [[example]]
 name = "local_dns"
 path = "examples/local_dns.rs"
+
+[[example]]
+name = "ultimate_dns"
+path = "examples/ultimate_dns.rs"
